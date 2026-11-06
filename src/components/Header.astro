@@ -1,0 +1,93 @@
+---
+// Header.astro
+---
+
+<!-- Fixed Scroll Progress Bar -->
+<div 
+  id="progress-bar" 
+  class="fixed top-0 left-0 h-1.5 w-full bg-gradient-to-r from-red-600 via-orange-400 to-violet-600 origin-left z-50 transform scale-x-0 transition-transform duration-75"
+></div>
+
+<header class="w-full">
+  <!-- Top Section: Solid Purple Banner with Centered Name -->
+  <div class="w-full bg-[#4c1d95] py-4 text-center">
+    <h1 class="text-2xl sm:text-3xl font-black text-white tracking-widest uppercase font-mono">
+      GIAN A. BALDELOVAR
+    </h1>
+  </div>
+
+  <!-- Bottom Section: Dark Blue/Slate Navigation Bar -->
+  <div class="w-full bg-[#0b1329] px-6 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
+      
+      <!-- Search Form -->
+      <section class="w-full lg:max-w-md text-left">
+        <form 
+          action="#" 
+          method="GET"
+          class="flex items-center border border-slate-700/60 bg-[#17223b] rounded-lg focus-within:border-violet-500 shadow-sm"
+        >
+          <input 
+            type="search" 
+            name="search" 
+            placeholder="Search projects or services..." 
+            required
+            class="w-full bg-transparent p-2.5 pl-4 font-mono text-sm text-slate-200 focus:outline-none placeholder-slate-400"
+          />
+          <button 
+            type="submit"
+            class="px-5 py-2.5 bg-[#2d3a54] text-slate-200 hover:bg-slate-600 font-mono text-sm font-semibold rounded-r-lg cursor-pointer transition-colors border-l border-slate-700/60"
+          >
+            Search
+          </button>
+        </form>
+      </section>
+
+      <!-- Nav Links & Email -->
+      <nav class="w-full lg:w-auto flex flex-col sm:flex-row gap-6 lg:gap-8 items-center font-mono text-sm lg:ml-auto">
+        <ul class="list-none flex flex-col sm:flex-row gap-4 lg:gap-6 p-0 m-0 font-medium text-center text-slate-300">
+          <li>
+            <a href="#projects" class="hover:text-orange-400 transition-colors leading-tight block text-center">
+              Featured<br />Builds
+            </a>
+          </li>
+          <li>
+            <a href="#services" class="hover:text-orange-400 transition-colors leading-tight block text-center">
+              Capabilities &<br />Services
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="hover:text-orange-400 transition-colors leading-tight block text-center">
+              Project Briefing<br />& Contact
+            </a>
+          </li>
+        </ul>
+
+        <!-- Orange Email Text -->
+        <span 
+          id="header-email" 
+          class="text-amber-500 font-semibold select-all font-mono text-xs sm:text-sm pl-2"
+        >
+          c20245092.baldelovar@csav.edu.ph
+        </span>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+<script>
+  // Scroll Progress Logic
+  const updateProgress = () => {
+    const progressBar = document.getElementById('progress-bar');
+    if (!progressBar) return;
+    
+    const winScroll = window.scrollY || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? winScroll / height : 0;
+    
+    progressBar.style.transform = `scaleX(${scrolled})`;
+  };
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+</script>
